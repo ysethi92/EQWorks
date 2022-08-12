@@ -5,30 +5,27 @@ import com.example.eqworkslocationlibrary.model.LocationModel
 import com.example.eqworkslocationlibrary.model.ResponseModel
 import com.example.eqworkslocationlibrary.api.LocationClient
 import kotlinx.coroutines.*
+import okhttp3.MediaType
+import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.Call
 import retrofit2.Callback
 
-public data class LocationEvent(val lat: Float,
+data class LocationEvent(val lat: Float,
                                 val lon: Float,
                                 val time: Long = System.currentTimeMillis(),
                                 val ext: String = "")
 
-public class Library {
+class Library {
     fun setup(): Boolean {
         return true
     }
 
     suspend fun log(event: LocationEvent): Response<ResponseModel> {
         // POST to API Server
-        var latitude = 0.0f
-        var longitude = 0.0f
-
+        val latitude = if (event.lat >= -90 && event.lat <= 90) event.lat else 0.0f
+        val longitude = if (event.lon >= -180 && event.lon <= 180) event.lon else 0.0f
         val time = event.time
-
-        if (event.lat >= -90 && event.lat <= 90) latitude = event.lat
-
-        if (event.lon >= -180 && event.lon <= 180) longitude = event.lon
 
         val locationModel = LocationModel(latitude, longitude, time)
 
@@ -49,12 +46,12 @@ public class Library {
                         if (response.isSuccessful) {
                             mResponse.complete(response)
                         } else {
-                            mResponse.complete(response)
+                            mResponse.complete(Response.error(500, ResponseBody.create(MediaType.parse("application/json; charset\\u003dUTF-8"), "Something went Wrong")))
                         }
                     }
 
                     override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-//                        print(t.toString())
+                        mResponse.complete(Response.error(500, ResponseBody.create(MediaType.parse("application/json; charset\\u003dUTF-8"), "Something went Wrong")))
                     }
                 }
             )
