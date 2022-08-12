@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LocationLogEQWorks</string>
+    <string name="send_location">Send Location</string>
+    <string name="enable">enable</string>
+    <string name="gps_not_found_title">GPS not found</string>
+    <string name="gps_not_found_message">Please enable GPS</string>
+    <string name="permission_required">Permission Required</string>
+    <string name="alert_dialog_ok">Go to permission</string>
+    <string name="location_coordinates">Location Coordinates</string>
+</resources>
