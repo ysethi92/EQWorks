@@ -11,7 +11,6 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.provider.Settings
 import android.util.Log
 import android.view.WindowManager
@@ -33,7 +32,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
-import java.lang.StringBuilder
 
 
 class MainActivity : AppCompatActivity() {

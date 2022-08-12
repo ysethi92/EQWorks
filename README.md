@@ -8,4 +8,4 @@ This repository contains two folders.
 Navigate to folder specific Readme.
 
 - Readme for [Location Log Library](https://github.com/ysethi92/EQWorks/tree/main/EQWorksLocationLibrary)
-- Readme for [Demo Application]()
+- Readme for [Demo Application](https://github.com/ysethi92/EQWorks/tree/main/LocationLogEQWorks)
