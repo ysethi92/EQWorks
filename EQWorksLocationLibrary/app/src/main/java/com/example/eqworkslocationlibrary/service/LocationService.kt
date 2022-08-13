@@ -7,6 +7,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object LocationService {
 
+    /**
+     * OkLog API provides link that contains a detailed response received from httpbin
+     **/
     private val okLogInterceptor = OkLogInterceptor.builder().build()
 
     private val client = OkHttpClient.Builder().addInterceptor(okLogInterceptor).build()

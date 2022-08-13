@@ -21,6 +21,11 @@ class Library {
         return true
     }
 
+    /**
+     * Entry point for library
+     * This function validates the current location coordinates
+     * POST these coordinates to the API server(httpbin) using Retrofit
+     **/
     suspend fun log(event: LocationEvent): Response<ResponseModel> {
         // POST to API Server
         val latitude = if (event.lat >= -90 && event.lat <= 90) event.lat else 0.0f
@@ -49,8 +54,7 @@ class Library {
                             mResponse.complete(Response.error(500, ResponseBody.create(MediaType.parse("application/json; charset\\u003dUTF-8"), "Something went Wrong")))
                         }
                     }
-
-                    override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
+                    override fun onFailure(call: Call<ResponseModel>, t: Throwable) { // Handling failures
                         mResponse.complete(Response.error(500, ResponseBody.create(MediaType.parse("application/json; charset\\u003dUTF-8"), "Something went Wrong")))
                     }
                 }

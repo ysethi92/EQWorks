@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            askPermission()
+            askPermissions()
         }
         else {
             completeSetup()
@@ -195,14 +195,14 @@ class MainActivity : AppCompatActivity() {
                         Manifest.permission.ACCESS_COARSE_LOCATION
                     )
                 ) {
-                    askPermission()
+                    askPermissions()
                 }
             }
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    private fun askPermission() {
+    private fun askPermissions() {
         requestPermissions(
             arrayOf(
                 Manifest.permission.ACCESS_FINE_LOCATION,
